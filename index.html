@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090b">
+  <meta name="description" content="HEN GENK COMMUNITY — HEN GENK IS FAMILY NOT A GANGSTER!!">
+  <title>HEN GENK COMMUNITY</title>
+  <style>
+    :root{
+      --bg:#070809;
+      --panel:#0e1013;
+      --silver:#d8d8d8;
+      --silver2:#8d9198;
+      --line:rgba(220,220,220,.22);
+      --white:#f4f4f4;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--white);
+      background:
+        radial-gradient(circle at 15% 12%, rgba(255,255,255,.09), transparent 22%),
+        radial-gradient(circle at 84% 28%, rgba(190,195,205,.07), transparent 25%),
+        linear-gradient(135deg,#050607,#111317 48%,#050607);
+      font-family: Georgia, "Times New Roman", serif;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";
+      position:fixed; inset:0; pointer-events:none; z-index:0;
+      opacity:.15;
+      background-image:
+        repeating-linear-gradient(115deg, transparent 0 38px, rgba(255,255,255,.10) 39px 40px, transparent 41px 76px);
+      mix-blend-mode:screen;
+    }
+    .flag{
+      position:absolute;
+      width:115px; height:72px;
+      background:linear-gradient(135deg,#191b1f,#6d7077 48%,#17191d);
+      border:1px solid rgba(255,255,255,.25);
+      box-shadow:0 16px 38px rgba(0,0,0,.45);
+      display:flex; align-items:center; justify-content:center;
+      color:#f0f0f0; font-weight:900; letter-spacing:5px;
+      font-family:Arial, sans-serif;
+      font-size:22px;
+      transform:rotate(-9deg);
+      clip-path:polygon(0 0,100% 7%,92% 100%,0 91%);
+      text-shadow:0 2px 10px #000;
+      z-index:1;
+    }
+    .flag:after{
+      content:""; position:absolute; inset:7px;
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .flag.f1{top:8%;left:-22px}
+    .flag.f2{top:27%;right:-28px;transform:rotate(10deg)}
+    .flag.f3{top:53%;left:-34px;transform:rotate(7deg)}
+    .flag.f4{top:72%;right:-24px;transform:rotate(-7deg)}
+    .flag.f5{top:90%;left:8%;transform:rotate(-4deg);width:96px;height:60px}
+
+    .hero{
+      min-height:92vh;
+      position:relative;
+      z-index:1;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; padding:90px 20px 70px;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(ellipse at center, rgba(255,255,255,.11), transparent 43%),
+        linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.72));
+    }
+    .eyebrow{
+      font-family:Arial,sans-serif;
+      font-size:11px; letter-spacing:7px; text-transform:uppercase;
+      color:#aaaeb5; margin-bottom:18px;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(42px,8vw,94px);
+      letter-spacing:clamp(4px,1.2vw,14px);
+      line-height:.95;
+      text-transform:uppercase;
+      color:#fff;
+      text-shadow:0 3px 0 #70747a, 0 10px 35px rgba(0,0,0,.9);
+      font-weight:900;
+    }
+    .tagline{
+      margin:26px 0 0;
+      font-family:Arial,sans-serif;
+      font-size:clamp(11px,2vw,16px);
+      letter-spacing:4px;
+      color:#c4c6ca;
+      font-weight:700;
+    }
+    .divider{
+      width:170px; height:1px; margin:34px auto 0;
+      background:linear-gradient(90deg,transparent,#eee,transparent);
+      box-shadow:0 0 18px rgba(255,255,255,.35);
+    }
+    .scroll{
+      position:absolute; bottom:24px;
+      font:10px Arial,sans-serif; letter-spacing:4px; color:#777b82;
+      text-transform:uppercase;
+    }
+
+    section{position:relative;z-index:1;max-width:1150px;margin:auto;padding:82px 22px}
+    .section-title{text-align:center;margin-bottom:46px}
+    .section-title h2{
+      margin:0 0 12px;
+      font-size:clamp(27px,4vw,44px);
+      letter-spacing:5px;
+      text-transform:uppercase;
+      text-shadow:0 3px 18px #000;
+    }
+    .section-title p{
+      margin:0;color:#858a91;font:11px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase
+    }
+
+    .hosts{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:28px;
+      max-width:760px;
+      margin:auto;
+    }
+    .host-card{
+      position:relative;
+      padding:13px;
+      background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.25);
+      box-shadow:0 25px 55px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.15);
+      transition:.3s ease;
+      cursor:pointer;
+    }
+    .host-card:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.65);box-shadow:0 30px 65px rgba(0,0,0,.7)}
+    .photo{
+      aspect-ratio:4/5; overflow:hidden; background:#111;
+      border:1px solid rgba(255,255,255,.15);
+    }
+    .photo img{width:100%;height:100%;display:block;object-fit:cover;filter:contrast(1.04) saturate(.85)}
+    .host-card:first-child .photo img{object-position:center 42%}
+    .host-card:nth-child(2) .photo img{object-position:center 45%}
+    .host-meta{text-align:center;padding:18px 5px 7px}
+    .role{font:10px Arial,sans-serif;letter-spacing:5px;color:#9ea2a8}
+    .name{margin-top:7px;font-size:27px;letter-spacing:3px;text-transform:uppercase}
+    .tap{margin-top:10px;font:9px Arial,sans-serif;letter-spacing:2px;color:#666b72;text-transform:uppercase}
+
+    .member-wrap{border-top:1px solid var(--line);margin-top:35px;padding-top:78px}
+    .members{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+    .member-card{
+      min-height:250px;
+      background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.018));
+      border:1px solid rgba(255,255,255,.18);
+      padding:12px;
+      box-shadow:0 18px 45px rgba(0,0,0,.35);
+    }
+    .placeholder{
+      height:185px;
+      border:1px dashed rgba(255,255,255,.25);
+      background:
+        radial-gradient(circle at 50% 45%,rgba(255,255,255,.08),transparent 25%),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 2px,transparent 2px 14px);
+      display:flex;align-items:center;justify-content:center;
+      color:#686d74;
+      font:10px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;
+    }
+    .member-name{text-align:center;margin-top:14px;font-size:18px;letter-spacing:2px;color:#c6c8cc}
+    .member-role{text-align:center;margin-top:5px;font:9px Arial,sans-serif;letter-spacing:3px;color:#666b72}
+
+    footer{
+      position:relative;z-index:1;
+      border-top:1px solid var(--line);
+      padding:45px 20px 55px;text-align:center;
+      background:rgba(0,0,0,.35)
+    }
+    footer strong{letter-spacing:4px}
+    footer p{font:10px Arial,sans-serif;letter-spacing:2px;color:#666b72;margin:12px 0 0}
+
+    @media(max-width:700px){
+      .hero{min-height:78vh;padding-top:70px}
+      .hosts{grid-template-columns:1fr;max-width:390px}
+      .members{grid-template-columns:1fr 1fr;gap:14px}
+      .member-card{min-height:210px;padding:9px}
+      .placeholder{height:145px}
+      .member-name{font-size:14px}
+      .flag{opacity:.55;transform:scale(.75) rotate(-9deg)}
+      .flag.f2{transform:scale(.75) rotate(10deg)}
+      .flag.f3{transform:scale(.75) rotate(7deg)}
+      .flag.f4{transform:scale(.75) rotate(-7deg)}
+    }
+    @media(max-width:430px){
+      .members{grid-template-columns:1fr}
+      .member-card{min-height:225px}
+      .placeholder{height:165px}
+    }
+  </style>
+</head>
+<body>
+  <div class="flag f1">HG</div>
+  <div class="flag f2">HG</div>
+  <div class="flag f3">HG</div>
+  <div class="flag f4">HG</div>
+  <div class="flag f5">HG</div>
+
+  <header class="hero">
+    <div class="eyebrow">Official Community</div>
+    <h1>HEN GENK<br>COMMUNITY</h1>
+    <p class="tagline">HEN GENK IS FAMILY NOT A GANGSTER!!</p>
+    <div class="divider"></div>
+    <div class="scroll">Scroll to explore</div>
+  </header>
+
+  <main>
+    <section id="host">
+      <div class="section-title">
+        <h2>Host</h2>
+        <p>Two people behind the community</p>
+      </div>
+
+      <div class="hosts">
+        <a class="host-card" href="https://www.tiktok.com/@henmantanpemain25" target="_blank" rel="noopener noreferrer" aria-label="Buka TikTok HEN ?">
+          <div class="photo"><img src="assets/host-hen.jpg" alt="Foto HEN ?"></div>
+          <div class="host-meta">
+            <div class="role">HOST</div>
+            <div class="name">HEN ?</div>
+            <div class="tap">Tap photo — TikTok</div>
+          </div>
+        </a>
+
+        <a class="host-card" href="https://www.tiktok.com/@laxyy_prime" target="_blank" rel="noopener noreferrer" aria-label="Buka TikTok Tulus ?">
+          <div class="photo"><img src="assets/host-tulus.jpg" alt="Foto Tulus ?"></div>
+          <div class="host-meta">
+            <div class="role">HOST</div>
+            <div class="name">TULUS ?</div>
+            <div class="tap">Tap photo — TikTok</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="member-wrap">
+        <div class="section-title">
+          <h2>Member</h2>
+          <p>9 slots — names and photos can be added later</p>
+        </div>
+
+        <div class="members">
+          <div class="member-card"><div class="placeholder">No photo</div><div class="member-name">MEMBER 01</div><div class="member-role">MEMBER</div></div>
+          <div class="member-card"><div class="placeholder">No photo</div><div class="member-name">MEMBER 02</div><div class="member-role">MEMBER</div></div>
+          <div class="member-card"><div class="placeholder">No photo</div><div class="member-name">MEMBER 03</div><div class="member-role">MEMBER</div></div>
+          <div class="member-card"><div class="placeholder">No photo</div><div class="member-name">MEMBER 04</div><div class="member-role">MEMBER</div></div>
+          <div class="member-card"><div class="placeholder">No photo</div><div class="member-name">MEMBER 05</div><div class="member-role">MEMBER</div></div>
+          <div class="member-card"><div class="placeholder">No photo</div><div class="member-name">MEMBER 06</div><div class="member-role">MEMBER</div></div>
+          <div class="member-card"><div class="placeholder">No photo</div><div class="member-name">MEMBER 07</div><div class="member-role">MEMBER</div></div>
+          <div class="member-card"><div class="placeholder">No photo</div><div class="member-name">MEMBER 08</div><div class="member-role">MEMBER</div></div>
+          <div class="member-card"><div class="placeholder">No photo</div><div class="member-name">MEMBER 09</div><div class="member-role">MEMBER</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>HG • HEN GENK COMMUNITY</strong>
+    <p>HEN GENK IS FAMILY NOT A GANGSTER!!</p>
+  </footer>
+</body>
+</html>
